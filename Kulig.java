@@ -3,7 +3,7 @@ import java.util.*;
 //Declaration package
 //package pl.krakow.up.s138049;
 /*Homework Class: Introduction to JAVA language*/
-public class Kulig  implements Comparable<Kulig>, Cloneable {
+public class Kulig  implements Inrerface {
     private static final String RESET = "\u001B[0m";
     private static final String RED = "\u001B[31m";
     private static final String GREEN = "\u001B[32m";
@@ -11,7 +11,7 @@ public class Kulig  implements Comparable<Kulig>, Cloneable {
     private static final String BLUE = "\u001B[34m";
     private static final String PURPLE = "\u001B[35m";
     private static final String CYAN = "\u001B[36m";
-    private static List<Kulig> tab = new ArrayList<Kulig>();
+    private static List<Kulig> tab = new ArrayList<>();
 
     private int id;
     private Date created;
@@ -121,15 +121,6 @@ public class Kulig  implements Comparable<Kulig>, Cloneable {
         horse.setHorseBreed(breed);
     }
 
-    public static final Comparator<Kulig> BY_NAME = new ByName();
-    private static class ByName implements Comparator<Kulig> {
-        @Override
-        public int compare(Kulig v, Kulig w){
-            // v.name is a String, and a String object is Comparable
-            return v.getDriver().compareTo(w.getDriver());
-        }
-    }
-
 
     public static void main(String[] args) throws CloneNotSupportedException {
        //test
@@ -139,10 +130,28 @@ public class Kulig  implements Comparable<Kulig>, Cloneable {
         tab.add(new Kulig("a", "20.11.2001", "dlugie cos","a","normalsbreed", 10, 72));
         tab.add((Kulig)tab.get(0).clone());
         //test
+        Kulig tab1[] = new Kulig[4];
+        for (int i = 0; i < tab1.length; i++)
+            tab1[i] = tab.get(i);
         System.out.println(CYAN + "\t\tWelcome in my aps!" + RESET);
         for (; ; ) {
 
+            /*Comparator
+            implements Comparator<Kulig>*/
+            System.out.println(tab.toString());
             Collections.sort(tab);
+            System.out.println();
+            System.out.println(tab.toString());
+
+            System.out.println("\n\n");
+            /*Comparable
+            implements Comparable<Kulig>*/
+            System.out.println(Arrays.toString(tab1));
+            Arrays.sort(tab1);
+            System.out.println();
+            System.out.println(Arrays.toString(tab1));
+
+
             System.out.println(YELLOW + "\t\t\tMENU" + RESET);
             System.out.println(BLUE + "1." + GREEN + " Show all event" + RESET);
             System.out.println(BLUE + "2." + GREEN + " Create new event" + RESET);
