@@ -123,35 +123,31 @@ public class Kulig  implements Inrerface {
 
 
     public static void main(String[] args) throws CloneNotSupportedException {
-       //test
+/*       //test
         tab.add(new Kulig("b", "20.11.2001", "dlugie cos","d","normalsbreed", 10, 1));
         tab.add(new Kulig("x", "20.11.2001", "dlugie cos","c","normalsbreed", 1, 20));
         tab.add(new Kulig("x", "20.11.2001", "dlugie cos","b","normalsbreed", 2, 202));
         tab.add(new Kulig("a", "20.11.2001", "dlugie cos","a","normalsbreed", 10, 72));
         tab.add((Kulig)tab.get(0).clone());
         //test
-        Kulig tab1[] = new Kulig[4];
-        for (int i = 0; i < tab1.length; i++)
-            tab1[i] = tab.get(i);
+*/
         System.out.println(CYAN + "\t\tWelcome in my aps!" + RESET);
         for (; ; ) {
 
-            /*Comparator
-            implements Comparator<Kulig>*/
-            System.out.println(tab.toString());
+            /*
+            Comparator
+            implements Comparator<Kulig> to Class
             Collections.sort(tab);
-            System.out.println();
-            System.out.println(tab.toString());
+            */
 
-            System.out.println("\n\n");
-            /*Comparable
-            implements Comparable<Kulig>*/
-            System.out.println(Arrays.toString(tab1));
-            Arrays.sort(tab1);
-            System.out.println();
-            System.out.println(Arrays.toString(tab1));
+            /*
+            Comparable
+            New class with implements Comparable<typeOfData>
+            Arrays.sort(tabName, new ClassName());
+            */
 
 
+            Collections.sort(tab);
             System.out.println(YELLOW + "\t\t\tMENU" + RESET);
             System.out.println(BLUE + "1." + GREEN + " Show all event" + RESET);
             System.out.println(BLUE + "2." + GREEN + " Create new event" + RESET);
