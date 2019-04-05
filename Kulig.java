@@ -1,9 +1,10 @@
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 //Declaration package
 //package pl.krakow.up.s138049;
 /*Homework Class: Introduction to JAVA language*/
-public class Kulig  implements Inrerface {
+public class Kulig implements Inrerface {
     private static final String RESET = "\u001B[0m";
     private static final String RED = "\u001B[31m";
     private static final String GREEN = "\u001B[32m";
@@ -22,8 +23,11 @@ public class Kulig  implements Inrerface {
     private static int countEvent = 0;
 
     @Override
-    public Object clone()throws CloneNotSupportedException{
-        return super.clone();
+    public Kulig clone() throws CloneNotSupportedException {
+        Kulig k;
+        k = (Kulig) super.clone();
+       // k.horse = (Horse) this.horse.clone();
+        return k;
     }
 
     @Override
@@ -34,13 +38,12 @@ public class Kulig  implements Inrerface {
 
     @Override
     public int compareTo(Kulig k) {
-        if(this.driver.compareTo(k.driver) > 0)
+        if (this.driver.compareTo(k.driver) > 0)
             return 1;
-        if(this.driver.compareTo(k.driver) < 0)
+        if (this.driver.compareTo(k.driver) < 0)
             return -1;
-        else
-        {
-            if(this.getHorseName().compareTo(k.getHorseName()) > 0)
+        else {
+            if (this.getHorseName().compareTo(k.getHorseName()) > 0)
                 return 1;
             if (this.getHorseName().compareTo(k.getHorseName()) < 0)
                 return -1;
@@ -123,14 +126,14 @@ public class Kulig  implements Inrerface {
 
 
     public static void main(String[] args) throws CloneNotSupportedException {
-/*       //test
+     //test
         tab.add(new Kulig("b", "20.11.2001", "dlugie cos","d","normalsbreed", 10, 1));
         tab.add(new Kulig("x", "20.11.2001", "dlugie cos","c","normalsbreed", 1, 20));
         tab.add(new Kulig("x", "20.11.2001", "dlugie cos","b","normalsbreed", 2, 202));
         tab.add(new Kulig("a", "20.11.2001", "dlugie cos","a","normalsbreed", 10, 72));
         tab.add((Kulig)tab.get(0).clone());
         //test
-*/
+
         System.out.println(CYAN + "\t\tWelcome in my aps!" + RESET);
         for (; ; ) {
 
