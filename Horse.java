@@ -33,6 +33,11 @@ public class Horse {
         this.price = price;
     }
 
+    @Override
+    public Horse clone() throws CloneNotSupportedException {
+        return (Horse) super.clone();
+    }
+
     public String getHorseName() {
         return this.name;
     }

@@ -26,7 +26,7 @@ public class Kulig implements Inrerface {
     public Kulig clone() throws CloneNotSupportedException {
         Kulig k;
         k = (Kulig) super.clone();
-       // k.horse = (Horse) this.horse.clone();
+        k.horse = (Horse) horse.clone();
         return k;
     }
 
@@ -36,20 +36,20 @@ public class Kulig implements Inrerface {
         return "Kulig(" + "ID: " + id + ",Created: " + aa.format(created) + ",Description: " + description + ",Driver: " + driver + ",Day: " + eventDay + "  Hourse: " + horse + ")";
     }
 
-    @Override
-    public int compareTo(Kulig k) {
-        if (this.driver.compareTo(k.driver) > 0)
-            return 1;
-        if (this.driver.compareTo(k.driver) < 0)
-            return -1;
-        else {
-            if (this.getHorseName().compareTo(k.getHorseName()) > 0)
-                return 1;
-            if (this.getHorseName().compareTo(k.getHorseName()) < 0)
-                return -1;
-        }
-        return 0;
-    }
+//    @Override
+//    public int compareTo(Kulig k) {
+//        if (this.driver.compareTo(k.driver) > 0)
+//            return 1;
+//        if (this.driver.compareTo(k.driver) < 0)
+//            return -1;
+//        else {
+//            if (this.getHorseName().compareTo(k.getHorseName()) > 0)
+//                return 1;
+//            if (this.getHorseName().compareTo(k.getHorseName()) < 0)
+//                return -1;
+//        }
+//        return 0;
+//    }
 
     public Kulig() {
         this.id = getCountEvent();
@@ -61,6 +61,12 @@ public class Kulig implements Inrerface {
         setCountEvent();
     }
 
+    /**
+     * To create a new Kulig by initializing.
+     * @param driver id for Kulig: unique;
+     * @param eventDay event day for Kulig.
+     * @param description description for Kulig.
+     */
     public Kulig(String driver, String eventDay, String description) {
         this.id = getCountEvent();
         this.created = new Date();
@@ -124,33 +130,28 @@ public class Kulig implements Inrerface {
         horse.setHorseBreed(breed);
     }
 
-
     public static void main(String[] args) throws CloneNotSupportedException {
      //test
         tab.add(new Kulig("b", "20.11.2001", "dlugie cos","d","normalsbreed", 10, 1));
         tab.add(new Kulig("x", "20.11.2001", "dlugie cos","c","normalsbreed", 1, 20));
-        tab.add(new Kulig("x", "20.11.2001", "dlugie cos","b","normalsbreed", 2, 202));
+        tab.add(new Kulig("c", "20.11.2001", "dlugie cos","b","normalsbreed", 2, 202));
         tab.add(new Kulig("a", "20.11.2001", "dlugie cos","a","normalsbreed", 10, 72));
-        tab.add((Kulig)tab.get(0).clone());
+        //tab.add((Kulig)tab.get(0).clone());
         //test
 
         System.out.println(CYAN + "\t\tWelcome in my aps!" + RESET);
         for (; ; ) {
+/*
+            Collections.sort(tab, new Comparator<Kulig>(){
+                @Override
+                public int compare(Kulig o1, Kulig o2) {
+                    return o1.getDriver().compareTo(o2.getDriver());
+                }
+            });
+*/
 
-            /*
-            Comparator
-            implements Comparator<Kulig> to Class
-            Collections.sort(tab);
-            */
+            Collections.sort(tab, Comparator.comparing(Kulig::getHorseName));
 
-            /*
-            Comparable
-            New class with implements Comparable<typeOfData>
-            Arrays.sort(tabName, new ClassName());
-            */
-
-
-            Collections.sort(tab);
             System.out.println(YELLOW + "\t\t\tMENU" + RESET);
             System.out.println(BLUE + "1." + GREEN + " Show all event" + RESET);
             System.out.println(BLUE + "2." + GREEN + " Create new event" + RESET);
